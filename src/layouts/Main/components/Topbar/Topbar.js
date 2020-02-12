@@ -33,6 +33,10 @@ const Topbar = props => {
   const logoText = {
     color: 'white'
   }
+  const logoImg = {
+    width: 40,
+    marginRight: 10
+  }
 
   const [notifications] = useState([]);
 
@@ -45,7 +49,8 @@ const Topbar = props => {
         <RouterLink to="/" style={style}>
           <img
             alt="Logo"
-            src="/images/logos/logo--white.svg"
+            src="/images/logos/logo.png"
+            style={logoImg}
           />
           <Typography variant="h4" style={logoText}>
             FLUTE

@@ -15,13 +15,13 @@ const Routes = () => {
       <Redirect
         exact
         from="/"
-        to="/account"
+        to="/trace"
       />
       <RouteWithLayout
         component={TraceView}
         exact
         layout={MainLayout}
-        path="/account"
+        path="/trace"
       />
       <RouteWithLayout
         component={NotFoundView}
