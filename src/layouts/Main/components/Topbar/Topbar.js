@@ -57,7 +57,7 @@ const Topbar = props => {
           </Typography>
         </RouterLink>
         <div className={classes.flexGrow} />
-        <Hidden mdDown>
+        {/* <Hidden mdDown>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
@@ -81,7 +81,7 @@ const Topbar = props => {
           >
             <MenuIcon />
           </IconButton>
-        </Hidden>
+        </Hidden> */}
       </Toolbar>
     </AppBar>
   );
