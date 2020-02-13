@@ -49,23 +49,49 @@ const AccountDetails = props => {
     setSelectedDate(date);
   };
 
-  const submitTraceDetails = () => {
+  const submitTraceDetails = async () => {
     console.log( 'Button Submit called', selectedDate); 
     // ..code to submit form to backend here...
     const baseURL = 'http://localhost:3000';
     axios.defaults.baseURL = baseURL;
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+    fetch(
+      baseURL+'/flute/api/generate_trace',
+      {   method: 'POST',
+          mode: 'no-cors',
+          headers: new Headers(
+             {"Content-Type": "application/json",
+              "Accept":"application/json"}
+          ),
+
+          body: JSON.stringify(
+             {
+                transactionId: values.transactionId,
+                beginTime: '-30days',
+                endTime:values.endTime
+             }
+          )
+       }
+     ).then( response => { console.log(response);})
+      .catch(err => console.log(err))
+
     // axios.post('http://127.0.0.1:3000/flute/api/generate_trace', {
-    axios.post('/flute/api/generate_trace', {
-      transactionId: values.transactionId,
-      beginTime: '-10days',
-      endTime:values.endTime
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    // await axios.post('/flute/api/generate_trace', {
+    //   transactionId: values.transactionId,
+    //   beginTime: '-10days',
+    //   endTime:values.endTime
+    // },{
+    //   // headers: {
+    //   //   'content-type': 'text/json'
+    //   // }
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 
   return (
